@@ -38,7 +38,7 @@ jobs:
         with:
           artifact: test-results-windows           # artifact name
           name: Test results                  # Name of the check run which will be created
-          path: '*.html'                     
+          path: '*.trx'                     
           reporter: dotnet-trx 
 
       - name: Publish executables
