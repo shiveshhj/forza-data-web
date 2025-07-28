@@ -27,6 +27,13 @@ jobs:
       - name: Run tests
         run: dotnet test ForzaDataWeb.sln --configuration Release --no-build --verbosity normal --logger html --logger trx
 
+      - name: Test results artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ matrix.os }}
+          path: '*/TestResults'
+        if: ${{ always() }}
+
       - name: Publish executables
         run: |
           dotnet publish SampleRecorder/SampleRecorder.csproj -c Release -o artifacts/SampleRecorder
