@@ -30,9 +30,16 @@ jobs:
       - name: Test results artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: test-results-${{ matrix.os }}
+          name: test-results-windows
           path: '*/TestResults'
         if: ${{ always() }}
+
+      - uses: dorny/test-reporter@v2
+        with:
+          artifact: test-results-windows           # artifact name
+          name: Test results                  # Name of the check run which will be created
+          path: '*.html'                     
+          reporter: dotnet-trx 
 
       - name: Publish executables
         run: |
