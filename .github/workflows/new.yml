@@ -29,8 +29,8 @@ jobs:
 
       - name: Publish executables
         run: |
-          dotnet publish ForzaDataWeb.Core/SampleRecorder/SampleRecorder.csproj -c Release -o artifacts/SampleRecorder
-          dotnet publish ForzaDataWeb.Core/Console/ForzaReceiver/ForzaReceiver.csproj -c Release -o artifacts/Receiver
+          dotnet publish SampleRecorder/SampleRecorder.csproj -c Release -o artifacts/SampleRecorder
+          dotnet publish Console/ForzaData.Console.csproj -c Release -o artifacts/Receiver
         working-directory: .
 
       - name: Upload build artifacts
