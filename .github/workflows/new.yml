@@ -36,8 +36,8 @@ jobs:
 
       - uses: dorny/test-reporter@v2
         with:
-          artifact: test-results-windows           # artifact name
-          name: Test results                  # Name of the check run which will be created
+          artifact: test-results-windows          
+          name: Test results                  
           path: 'Tests/TestResults/*.trx'                     
           reporter: dotnet-trx 
 
@@ -52,3 +52,7 @@ jobs:
         with:
           name: publish-artifacts
           path: artifacts/**
+
+      - name: Install WiX Toolset
+        run: choco install wixtoolset -y
+        shell: powershell
